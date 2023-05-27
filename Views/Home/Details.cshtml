@@ -1,0 +1,100 @@
+﻿@using YemekSiparis.Models
+@using YemekSiparis.Entities
+@using YemekSiparis.Context
+@model ProductModel 
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="row">
+    <div class="col-6">
+        <img src="~/Content/images/@Model.Image" class="img-fluid rounded" />
+    </div>
+    <div class="col-6">
+        <div class="row">
+            <div class="col-12">
+                <h1>@Model.Name #235672</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                @if (Model.Stock>0)
+                {
+                    <span class="badge bg-primary">Stokta</span>
+                }
+                else
+                {
+                    <span class="badge bg-danger">Stokta Yok</span>
+                }
+
+                <span class="product-number">
+                    @{ 
+                        Random random = new Random();
+                        var pNumber = random.Next(1000, 10000);
+                    }
+                    #@pNumber
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div id="description">
+                    @Model.Description
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 mt-2 mb-2">
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star-half-stroke"></i>
+                <span class="badge bg-success">53</span>
+            </div>
+            <div class="col-4">
+
+            </div>
+        </div>
+        <div class="row mt-2 mb-2">
+            <div class="col-12">
+                
+                <h4 id="product-price"><i class="fa-solid fa-turkish-lira-sign"></i>@Model.Price</h4>
+            </div>
+            
+        </div>
+
+        @if (Model.CategoryId == 1 || Model.CategoryId == 2)
+        {
+            <div class="row row-cols-1 row-cols-md-3 g-4 mb-3">
+                @{
+                    DatabaseContext db = new DatabaseContext();
+                    var extra = db.ExtraMaterials.ToList();
+
+                    foreach (var item in extra)
+                    {
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                @item.Name
+                            </label>
+                        </div>
+
+                    }
+
+                }
+
+            </div>
+        }
+        <div class="row mt-2 mb-2">
+            <div class="col-12">
+                <button type="submit" class="btn btn-success">
+                    <i class="fa-solid fa-cart-plus"></i>
+                    Sepete Ekle
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
