@@ -11,11 +11,12 @@ using YemekSiparis.Entities;
 
 namespace YemekSiparis.Controllers
 {
+    [Authorize(Roles ="admin")]
     public class CategoriesController : Controller
     {
         private DatabaseContext db = new DatabaseContext();
 
-        // GET: Categories
+       
         public ActionResult Index()
         {
             return View(db.Categories.ToList());

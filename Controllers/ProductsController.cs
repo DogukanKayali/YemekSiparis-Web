@@ -11,6 +11,7 @@ using YemekSiparis.Entities;
 
 namespace YemekSiparis.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class ProductsController : Controller
     {
         private DatabaseContext db = new DatabaseContext();
