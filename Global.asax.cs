@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using YemekSiparis.Context;
+using YemekSiparis.Identity;
 
 namespace YemekSiparis
 {
@@ -13,6 +16,8 @@ namespace YemekSiparis
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            Database.SetInitializer(new Initializer());
+            Database.SetInitializer(new IdentityInitializer());
         }
     }
 }

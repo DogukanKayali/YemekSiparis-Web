@@ -1,27 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace YemekSiparis.Entities
+namespace YemekSiparis.Models
 {
-    public class User
+    public class RegisterModel
     {
-        public int Id { get; set; }
+
         [Required]
         public string Name { get; set; }
+        [Required]
+        public string Surname { get; set; }
+        [Required]
+        public string UserName { get; set; }
         [Required]
         public string Email { get; set; }
         [Required]
         public string Password { get; set; }
-
-        public DateTime RegisterDate { get; set; }
-
-        [NotMapped]
         [Required]
-        [Compare("Password")]
-        public string ConfirmPassword { get; set; }
+        [DataType(DataType.Password)]
+        [Compare("Password",ErrorMessage ="Şifreler Eşleşmiyor")]
+        public string RePassword { get; set; }
     }
 }

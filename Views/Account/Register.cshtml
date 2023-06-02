@@ -8,7 +8,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Login</title>
+    <title>Register</title>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -16,21 +16,23 @@
 
 </head>
 <body>
-    @using (Html.BeginForm("Register", "Home", FormMethod.Post))
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post))
     {
 
         <div class="login">
 
             <h1>Register</h1>
             @Html.AntiForgeryToken()
-            <form method="post">
-
-                <input type="text" name="name" placeholder="Username" required="required" />
-                <input type="email" name="email" placeholder="Email" required="required" />
-                <input type="password" name="password" placeholder="Password" required="required" />
-                <input type="password" name="confirmpassword" placeholder="RePassword" required="required" />
-                <button type="submit" class="btn btn-primary btn-block btn-large">Register</button>
-            </form>
+        <form method="post">
+            @Html.ValidationSummary(false,"",new { @class = "text-danger"})
+            <input type="text" name="name" placeholder="Name" required="required" />
+            <input type="text" name="surname" placeholder="Surname" required="required" />
+            <input type="text" name="username" placeholder="Username" required="required" />
+            <input type="email" name="email" placeholder="Email" required="required" />
+            <input type="password" name="password" placeholder="Password" required="required" />
+            <input type="password" name="repassword" placeholder="RePassword" required="required" />
+            <button type="submit" class="btn btn-primary btn-block btn-large">Register</button>
+        </form>
             <form action="/Home/Index" method="post" style="margin-top:20px">
                 <button type="submit" class="btn btn-primary">Anasayfaya Dön</button>
             </form>

@@ -7,7 +7,7 @@ using YemekSiparis.Entities;
 
 namespace YemekSiparis.Context
 {
-    public class Initilizer:CreateDatabaseIfNotExists<DatabaseContext>
+    public class Initializer:CreateDatabaseIfNotExists<DatabaseContext>
     {
         protected override void Seed(DatabaseContext context)
         {

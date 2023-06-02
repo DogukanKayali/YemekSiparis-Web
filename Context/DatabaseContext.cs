@@ -12,14 +12,12 @@ namespace YemekSiparis.Context
         
         public DatabaseContext():base("SQL")
         {
-            Database.SetInitializer(new Initilizer());
+            
         }
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
 
         public DbSet<ExtraMaterial> ExtraMaterials { get; set; }
-
-        public DbSet<User> Users { get; set; }
     }
 }

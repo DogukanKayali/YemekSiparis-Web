@@ -1,0 +1,76 @@
+﻿@using YemekSiparis.Models
+@model Cart
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container pb-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>AlışVeriş Sepeti</h2>
+            <hr />
+            @if (Model.CartLines.Count > 0)
+            {
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Quantity</th>
+                            <th>Product Name</th>
+                            <th>Price</th>
+                            <th>Sub Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.CartLines)
+                        {
+                            <tr>
+                                <td>
+                                    <img src="~/Content/images/@item.Product.image" width="50" />
+                                </td>
+                                <td>
+                                    @item.Quantity
+                                </td>
+                                <td>
+                                    @item.Product.Name
+                                </td>
+                                <td>
+                                    @item.Product.Price
+                                </td>
+                                <td>
+                                    @((item.Product.Price * item.Quantity).ToString("c")
+                                </td>
+                                <td>
+                                    @using (Html.BeginForm("RemoveFromCart", "Cart"))
+                                    {
+                                        @Html.Hidden("Id", item.Product.Id)
+                                        <button type="submit" class="btn btn-danger">
+                                            <i class="fa-solid fa-trash"></i>
+                                            Ürünü Sil
+                                        </button>
+                                    }
+                                </td>
+                            </tr>
+                        }
+
+
+
+                    </tbody>
+                    <tfooter>
+
+                    </tfooter>
+
+                </table>
+            }
+            else
+            {
+        <div class="alert alert-warning" role="alert">
+            <i class="fa-solid fa-cirle-exclamation"></i>
+            Alışvberiş sepetinizde ürün bulunmamaktdır.
+        </div>
+            }
+       
+        </div>
+    </div>
+</div>
+

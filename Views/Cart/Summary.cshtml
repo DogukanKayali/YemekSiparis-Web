@@ -1,0 +1,10 @@
+﻿@using YemekSiparis.Models
+@model Cart
+
+<ul class="navbar-nav my-2 my-lg-0">
+    <li id="cart" class="nav-item">
+        <i class="fa-solid fa-cart-plus"></i>
+        @Model.CartLines.Count()
+    </li>
+</ul>
+
