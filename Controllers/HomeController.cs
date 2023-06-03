@@ -69,6 +69,11 @@ namespace YemekSiparis.Controllers
             return View(model);
         }
 
+        public PartialViewResult GetCategories()
+        {
+            return PartialView(db.Categories.ToList());
+        }
+
        
     }
 }
