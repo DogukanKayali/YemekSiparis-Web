@@ -38,15 +38,16 @@ namespace YemekSiparis.Identity
                 manager.AddToRole(user.Id, "admin");
                 manager.AddToRole(user.Id, "user");
             }
-
-            if (!context.Users.Any(i => i.UserName == "dogus"))
+            if (!context.Users.Any(i => i.UserName == "admin"))
             {
                 var store = new UserStore<ApplicationUser>(context);
                 var manager = new UserManager<ApplicationUser>(store);
-                var user = new ApplicationUser() { Name = "dogus", Surname = "kayalı", UserName = "dogus", Email = "dogus@hotmail.com" };
-                manager.Create(user, "123456");
+                var user = new ApplicationUser() { Name = "admin", Surname = "admin", UserName = "admin", Email = "admin@admin.com" };
+                manager.Create(user, "admin1");
+                manager.AddToRole(user.Id, "admin");
                 manager.AddToRole(user.Id, "user");
             }
+
 
             base.Seed(context);
         }

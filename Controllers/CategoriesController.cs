@@ -125,5 +125,10 @@ namespace YemekSiparis.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public PartialViewResult GetCategories()
+        {
+            return PartialView(db.Categories.ToList());
+        }
     }
 }

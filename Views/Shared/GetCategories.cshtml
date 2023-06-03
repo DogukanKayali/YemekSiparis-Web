@@ -19,15 +19,12 @@
                         <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Ürünler
                         </button>
-                        
                         <div class="dropdown-menu" aria-labelledby="DropdownMenuLink">
                             @foreach (var item in Model)
                             {
                                 <a class="dropdown-item" href="/Home/Urunler/@item.Id">@item.Name</a>
                             }
-                            </div>
-                       
-
+                        </div>
                     </div>
                 </li>
                 @if (User.Identity.IsAuthenticated & User.IsInRole("admin"))
@@ -39,18 +36,18 @@
                         <a class="nav-link" href="~/Products/Index">Ürünleri Düzenle</a>
                     </li>
                 }
-
-
-
             </ul>
             <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Account/Login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Account/Register">Register</a>
+                    </li>
+                }
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/Account/Login">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/Account/Register">Register</a>
-                </li>
                 @if (User.Identity.IsAuthenticated)
                 {
                     <li class="nav-item">
